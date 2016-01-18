@@ -1,0 +1,121 @@
+<!-- js实现树结构 -->
+<!-- 
+1. 使用jQuery获取特定元素的方式 伪类元素的使用
+2. toggle()  toggleClass()  slideToggle()
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<style type="text/css">
+		.tree{
+			width: 250px; 		
+		}
+		li{
+			font-size: 24px;
+			font-family: "youyuan";
+		}
+		.li-foucs{
+			color: #111111;
+			list-style-image: url("./img/iconfont-minus.svg");
+			cursor: pointer;
+		}
+		.li-jia{
+			list-style-image: url("./img/iconfont-jia.svg");
+			
+		}
+		.li-munis{
+			list-style-image: url("./img/iconfont-minus.svg");
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="tree">
+		<ul>
+			<li>物理
+				<ul>
+					<li>应用物理</li>
+					<li>理论物理</li>
+				</ul>
+			</li>
+			<li>计算机
+				<ul>
+					<li>计算机硬件</li>
+					<li>计算机软件</li>
+					<li>软件工程
+						<ul>
+							<li>C语言</li>
+							<li>JavaScript
+								<ul>
+									<li>javascript语法</li>
+									<li>DOM操作</li>
+								</ul>
+							</li>
+							<li>Python</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>英语
+				<ul>
+					<li>listening</li>
+					<li>speaking</li>
+					<li>writing</li>
+				</ul>
+			</li>
+			<li>数学
+					<ul>
+						<li>高数</li>
+						<li>线代</li>
+						<li>概率统计
+							<ul>
+								<li>概率论</li>
+								<li>数理统计</li>
+							</ul>
+						</li>
+					</ul>
+			</li>
+			<li>生物
+					<ul>
+						<li>细胞学</li>
+						<li>生态学</li>
+					</ul>
+			</li>
+			<li>化学
+					<ul>
+						<li>材料化学</li>
+						<li>分子化学</li>
+						<li>生物化学</li>
+					</ul>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src = "./jquery.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("li:has(ul)").click(function(event){
+				if( this == event.target ){
+					// if( $(this).children().is(":hidden") ){
+					// 	$(this).removeClass("li-minus");
+					// 	$(this).addClass("li-jia").children().show();
+					// }else{
+					// 	$(this).removeClass("li-jia");
+					// 	$(this).addClass("li-minus").children().hide();
+					// }
+					$(this).toggleClass("li-jia","li-minus");
+					$($(this).children()).slideToggle(function(){
+						$(this).show();
+					},function(){						
+					});
+				}
+				return false;
+			}).addClass("li-foucs").children().hide();
+				
+			$("li:not(:has(ul))").css("list-style-image","none");
+		});
+	</script>
+</body>
+</html>
