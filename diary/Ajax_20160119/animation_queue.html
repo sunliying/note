@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>queue</title>
+<style type="text/css">
+	.box{
+		width: 700px;
+		margin: 20px auto;
+		position: relative;
+	}
+	.line{
+		width: 4px;
+		background-color: #999;
+		position: absolute;
+		background-image: linear-gradient(to bottom,#999,#eee);
+		
+	}
+	p,h1{
+		margin: 60px 30px;
+		font-size: 24px;
+		position: relative;
+	}
+	.on{
+		animation: transfer 0.4s ease-in;
+		-webkit-animation: transfer 0.4s ease-in;
+	}
+	@keyframes transfer{
+		from{
+			/*-webkit-transform: translate(30px);*/
+			top: 30px;
+		}
+		to{
+			/*-webkit-transform: translate(0px);*/
+			top: 0px;
+		}
+	}
+	a{
+		font-size: inherit;
+	}
+</style>
+</head>
+<body>
+	<div class="box">
+		<div class="line"></div>
+		<p class="tag"></p>
+		<p class="year"></p>
+	</div>
+	
+<script type="text/javascript" src="../DOM_20160118/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$.getJSON("./arti.json",function(data){
+			var obj = data;
+			var n = data.length;
+			$(".line").css({"height":n*120+"px","display":"none"})
+			.slideDown(500,function(){
+				$(".tag").addClass("on").html(obj[0].tag).css("display","none").fadeIn(500,function(){
+					$(".year").addClass("on").html(obj[0].year).css("display","none").fadeIn(500,function(){
+						for(var i =1;i<n;i++){						 	
+							$(".box").append('<h1 class="name_'+i+'"><span class= "time">'+ obj[i].data +'</span><a href="#">'+ obj[i].name +'</a></h1>');
+						}  
+						
+						$(".box h1").each(function(index){
+							$(this).addClass("on").css({"display":"none"}).delay(index*400).fadeIn(500);
+						});
+						
+					});
+				});
+					
+				
+			});
+		});
+	});
+</script>
+</body>
+</html>

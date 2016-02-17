@@ -1,0 +1,47 @@
+<!-- Ajax返回json对象制作表格 -->
+<!-- 
+1. 使用get 和getJSON得到的json文本都是一个对象，已经解析过了，不用再使用$.parseJSON()了
+2. 使用for in 循环读取对象中的属性名和属性值的区别
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Data_transfer</title>
+<style type="text/css">
+	table{
+		border-collapse: collapse;
+		font-size: 20px;
+	}
+</style>
+</head>
+<body>
+	<input type="button" value = "click">
+<script type="text/javascript" src="../DOM_20160118/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("input").click(function(){
+			$.get("./foo.json",function(data){  //使用get或者getJson得到的都是一个对象
+				//var obj = $.parseJSON(data);
+				var str = "<table border = '3'><tr>";
+				for( var name in data[0]){
+					//读取属性名
+					str += "<th>"+name+"</th>";
+				}
+				str += "</tr>";
+				for( var i = 0;i<data.length;i++){
+					str += "<tr>";
+					for( var value in data[i]){
+						//读取属性值
+						str += "<td>" + data[i][value] +"</td>";
+					}
+					str += "</tr>";
+				}
+				str += "</table>";
+				$("body").append(str);
+			});
+		});
+	});
+</script>
+</body>
+</html>

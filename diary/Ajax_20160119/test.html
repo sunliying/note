@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			margin: 0px;
+			padding: 0px;
+			display: inline-block;
+			animation: change_pre 0.6s ease-in;
+			-webkit-animation: change_pre 0.6s ease-in forwards;
+		}
+		@keyframes  change_pre{
+	from {
+		transform: translate(30px);
+	}
+	to {
+		transform: translate(200px);
+	}
+}
+.on{
+		animation: transfer 0.4s ease-in;
+		-webkit-animation: transfer 0.4s ease-in;
+	}
+	@keyframes transfer{
+		from{
+			-webkit-transform: translate(30px);
+		}
+		to{
+			--webkit-transform: translate(0px);
+		}
+	}
+	</style>
+</head>
+<body>
+	<div>sunliying</div>
+</body>
+</html>
