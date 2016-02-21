@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+    <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+</head>
+
+<body>
+	<div ng-app = "myApp" ng-controller = "myCtrl" >
+        <form novalidate>
+            <label>Name:</label><input type="text" ng-model="user.name"></input>
+            <label>Email:</label><input type="email" ng-model="user.email"></input>
+            <label>Age:</label><input type="number" ng-model="user.age"></input>
+            <!-- 注意，在此不能设置button的类型为reset，浏览器中reset会重置 -->
+            <button ng-click="reset()">reset</button>
+        </form>
+        <p>{{user}}</p>
+        <p>{{master}}</p>
+    </div>
+<script type="text/javascript">
+    var myapp = angular.module("myApp",[]);
+    myapp.controller("myCtrl",function($scope){
+        $scope.master={ name:"sunliying",email:"1174587076@qq.com",age:21};
+        $scope.reset = function() {
+            $scope.user = angular.copy($scope.master);
+        };
+        $scope.reset();
+    });
+</script>
+</body>
+
+</html>

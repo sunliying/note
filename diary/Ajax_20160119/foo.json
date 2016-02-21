@@ -1,29 +1,8 @@
-[{
-	"name":"sunliying",
-	"age":"20",
-	"address":"luoyang",
-	"school":"luoyigao",
-	"phone-number":"******"
-},
 {
-	"name":"yanyan",
-	"age":"20",
-	"address":"luoyang",
-	"school":"luoyigao",
-	"phone-number":"******"
-},
-{
-	"name":"dnti",
-	"age":"20",
-	"address":"luoyang",
-	"school":"luoyigao",
-	"phone-number":"******"
-},
-{
-	"name":"liying",
-	"age":"20",
-	"address":"luoyang",
-	"school":"luoyigao",
-	"phone-number":"******"
+	"records":[
+	{"name":"sunliying","age":"20","address":"luoyang","school":"luoyigao","phoneNumber":"******"},
+	{"name":"yanyan","age":"20","address":"luoyang","school":"luoyigao","phoneNumber":"******"},
+	{"name":"dnti","age":"20","address":"luoyang","school":"luoyigao","phoneNumber":"667789"},
+	{"name":"liying","age":"20","address":"luoyang","school":"luoyigao","phoneNumber":"123890"}
+]
 }
-]	

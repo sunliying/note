@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+    <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+</head>
+<body ng-app = "myApp">
+	<div ng-controller = "ctrl1" >
+    <!-- ng-options选择对象 -->
+        <select ng-model="selectedsite" ng-options="x.site for x in names"></select>
+        <p>名称：{{selectedsite.site}}</p>
+        <p>地址：{{selectedsite.url}}</p>
+    <!-- ng-repeat选择字符串 -->
+        <select  ng-model="selectedsite2">
+            <option ng-repeat="x in names">{{x.site}}</option>
+        </select>
+        <p>名称：{{selectedsite2}}</p>
+        
+    </div>
+    <div ng-controller="ctrl2">
+        <!-- 数据源为对象时，ng-options的写法.在key-value值对中ng-model得到的是value -->
+        <select ng-model="selectedsite3" ng-options="y.course for (x,y) in courses"></select>
+        <p>课程名：{{ selectedsite3.course }}</p>
+        <p>任课教师：{{ selectedsite3.teacher }}</p>
+        <p>学生人数：{{ selectedsite3.xuesheng }}</p>
+    </div>
+    <div ng-controller="ctrl3">
+        <select ng-model="selectedCar" ng-options="y.brand for (x, y) in cars"></select>
+        <p>车名：{{selectedCar.brand}}</p>
+        <p>model：{{selectedCar.model}}</p>
+        <p>color：{{selectedCar.color}}</p>
+    </div>
+<script type="text/javascript">
+    var myapp = angular.module("myApp",[]);
+
+    myapp.controller("ctrl1",function($scope){
+        $scope.names = [{site:"sunliying",url:"www.ccnu.edu.cn"},{site:"wangyifeng",url:"http://sunliying.github.io"},{site:"sunly",url:"127.0.0.1:8080"}];        
+    });
+    myapp.controller("ctrl2",function($scope){
+        $scope.courses = {
+            x001:{teacher:"Jone",course:"Math",xuesheng:"39"},
+            x002:{teacher:"Sunly",course:"English",xuesheng:"40"},
+            x003:{teacher:"Jane",course:"Chinese",xuesheng:"29"},
+            x004:{teacher:"Sunyish",course:"Physics",xuesheng:"34"}
+        };
+    });
+    myapp.controller("ctrl3",function($scope){
+        $scope.cars = {
+        car01 : {brand : "Ford", model : "Mustang", color : "red"},
+        car02 : {brand : "Fiat", model : "500", color : "white"},
+        car03 : {brand : "Volvo", model : "XC90", color : "black"}
+    };
+    })
+</script>
+</body>
+
+</html>
