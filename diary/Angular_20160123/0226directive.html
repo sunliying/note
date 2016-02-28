@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <style type="text/css">
+    div {
+        margin: 20px;
+    }
+    </style>
+</head>
+<!-- <body>
+    <div ng-app = "myApp" ng-controller="myCtrl">
+        <div><label>请选择文本颜色：</label><input type="color" ng-model="colorist"></input></div>
+        <div><label>请输入你的名称：</label><input ng-model = "name"></input> </div>
+        <div><label>内容如下：</label><smile color='colorist'>the name is {{name}},and the color is {{colorist}}</smile></div> 
+        <p title="{{name}}">{{name}}</p>
+        <p title="{{colorist}}">{{colorist}}</p>
+    </div>
+<script type="text/javascript">
+    var myapp = angular.module('myApp',[]);
+    // 由此可以看出link函数，controller函数和compile函数执行的顺序
+    myapp.directive("smile",function(){
+        var func = function(){
+            console.log("sunliying");
+            return function($scope,$element,$attrs){
+                $scope.name +="*_*";
+                console.log($attrs.color);
+                $element.css('color',$attrs.color);
+            };
+            
+            // $scope.$watch($attrs.color,function(newColor){
+            //     console.log(newColor);
+            //     console.log($attrs.color);
+            //     $element.css('color',newColor);
+            // });
+            
+        };
+        return {
+            restrict: "EA",
+            // scope:{ color1:'@color'},
+            compile: func
+        };
+    });
+    // 在这里，color的属性值colorist就相当于一个变量了,改变将时刻被监听
+    myapp.controller('myCtrl',function($scope){
+        console.log($scope);
+        $scope.colorist="black";
+        console.log($scope);
+        $scope.name="sunly";
+    });
+    // angular.bootstrap(document,['myApp']);
+</script>
+</body> -->
+
+<body ng-app="Demo">
+        <div ng-controller="TestCtrl">
+    <input type="text" ng-model="a" test />
+    <button ng-click="show(a)">查看</button>
+  </div>
+    <script type="text/javascript">
+   var app = angular.module('Demo', [], angular.noop);
+
+   app.directive('test', function(){
+     var link = function($scope, $element, $attrs, $ctrl){
+
+       $ctrl.$formatters.push(function(value){
+         return value.join(',');
+       });
+
+     $ctrl.$parsers.push(function(value){
+        return value.split(',');
+       });
+     }
+
+     return {compile: function(){return link},
+             require: 'ngModel',
+           restrict: 'A'}
+ });
+   app.controller('TestCtrl', function($scope){
+     // $scope.a = [];
+     $scope.a = [1,2,3];
+     $scope.show = function(v){
+       console.log(v);
+     }
+   });
+    </script>
+</body>
+
+</html>

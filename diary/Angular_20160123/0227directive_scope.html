@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript">
+    var app = angular.module('Demo', [], angular.noop);
+
+    app.directive('bbb', function() {
+        var func = function(element, attrs) {
+            return function(scope) {
+            	// undefined
+                console.log(scope.name);
+            };
+        };
+        return {
+            compile: func,
+            restrict: 'A',
+            scope:{}
+        };
+    });
+    app.controller('TestCtrl', function($scope) {
+    	$scope.name="jack";
+    	// jack
+        console.log($scope.name);
+    });
+    </script>
+</head>
+
+<body ng-app="Demo">
+  <div ng-controller="TestCtrl">
+    <div bbb></div>
+  </div>
+</body>
+
+</html>
