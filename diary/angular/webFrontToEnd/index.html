@@ -1,0 +1,52 @@
+<script type="text/javascript">
+	          stateHelperProvider.setNestedState({
+           	name: 'root',
+           	url: '/root',
+           	templateUrl: './partials/init.html',
+           	children: [
+           	{
+           		name: 'state1',
+           		url: '/state1',
+           		templateUrl: './partials/state1.html',
+           		children: [
+           		{
+           			name: 'list',
+           			url: '/list',
+           			templateUrl: './partials/state1.list1.html',
+           			controller: function($scope){
+           				$scope.items = ['happy','欢乐趣','离别苦'];
+           			}
+           		}]
+           	},
+           	{
+           		name: 'state2',
+           		url: '/state2',
+           		templateUrl: './partials/state2.html',
+           		children: [
+           		{
+           			name: 'list',
+           			url: '/list',
+           			templateUrl: './partials/state2.list.html',
+           			controller: function($scope){
+           				$scope.things = ['phone','ear','book','umbrella'];
+           			}
+           		}]
+           	}]
+           });
+          $stateProvider
+            .state('state1', {
+            	url: '/state',
+              templateUrl: './partials/state1.html',
+              controller: function($scope){
+                         				$scope.items = ['happy','欢乐趣','离别苦'];
+                         			}
+            })
+            .state('state1.list', {
+            	url: '/list',
+              templateUrl: './partials/state1.list1.html'
+            });
+
+          function MainCtrl($state){
+            $state.transitionTo('contacts.list');
+          }
+</script>

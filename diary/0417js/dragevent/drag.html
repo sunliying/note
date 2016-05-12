@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drag</title>
+	<style type="text/css">
+		.drag-target[draggable = "ture"]{
+			cursor: pointer;
+		}
+		input[type="textarea"]{
+			height: 300px;
+			width: 400px;
+			margin: auto;
+		}
+		.drag-place{
+			height: 300px;
+			width: 300px;
+			border: 2px solid #96f;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div draggable="true" class="drag-target">drag</div>
+	<!-- <form>
+		<input type="textarea" rows="30" cols="100" value="textarea"></input>
+	</form> -->
+	<div class="drag-place"></div>
+	<script type="text/javascript">
+		// var target = document.getElementsByTagName("input")[0];
+		// target.ondragenter = function(event){
+		// 	target.style.backgroundColor = "#aaa";
+		// 	event.preventDefault();
+		// };
+		// target.ondragover = function(event){
+		// 	target.style.backgroundColor = "#aaa";
+		// 	event.preventDefault();
+		// };
+		// target.ondrop = function(event){
+		// 	target.value += "     GREAT";
+		// 	event.preventDefault();
+		// };
+		var target2 = document.getElementsByClassName("drag-place")[0];
+		var drag = document.getElementsByClassName("drag-target")[0];
+		drag.ondragstart = function(event){
+			event.dataTransfer.effectAllowed = "copy";
+			// event.preventDefault();	
+		}
+		target2.ondragenter = function(event){
+			target2.style.backgroundColor = "#aaa";
+			event.dataTransfer.dropEffect = "copy";
+			event.preventDefault();
+		};
+		target2.ondragover = function(event){
+			target2.style.backgroundColor = "#fff";
+			event.preventDefault();
+		};
+		target2.ondrop = function(event){
+			// target2.appendChild();
+			event.preventDefault();
+		};
+	</script>
+</body>
+</html>

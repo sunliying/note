@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html>
+<head>
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            var app = angular.module('ngCustomDirectiveTest', []);
+            app.controller('myController', ['$scope', function ($scope) {
+                $scope.name="jack";
+                $scope.jack={
+                    name: "jack"
+                };
+            }]);
+
+            app.directive("studentInfo", function () {
+                return {
+                    restrict: 'E',
+                    // transclude:true,
+                    scope: {newname:{name:"kkko"} },
+                    template: '<p>newname: {{newname.name}}</p>'
+                };
+            });
+        })();
+    </script>
+</head>
+<body ng-app="ngCustomDirectiveTest">
+    <div ng-controller="myController as myCtrl">
+        <student-info info="jack">
+            <!-- newname.name:{{newname.name}}
+            <p>newname.name:{{newname.name}}</p> -->
+        </student-info>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "todoApp">
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <style type="text/css">
+    .des{
+        position: relative;
+    }
+    .clear{
+        border: solid #333 1px;
+        background-color: #193;
+        cursor: pointer;
+        position: absolute;
+        right: 30px;
+   }
+   .todoApp{
+    width: 500px;
+    background-color: #eee;
+    padding: 10px;
+    border: 2px #999 solid;
+   }
+   .todolists li{
+    position: relative;
+   }
+   .todolists li span.date{
+    position: absolute;
+    right: 0px;
+   }
+   .overtime{
+    color: red;
+   }
+    </style>
+</head>
+
+<body>
+	<div class="todoApp" ng-controller = "todoListCtrl as todoList" >
+        <h2>TODO LIST</h2>
+        <div class="des">
+            <span class="count">Totally {{ todoList.todos.length }} events,{{ todoList.remain() }} left.</span>
+            <span class="commen">{{ todoList.commen }}</span>
+            <span class="clear" ng-click="todoList.clear()">删除</span>
+        </div>
+        <ul class="todolists">
+            <li ng-repeat="todo in todoList.todos">
+                <input type="checkbox" ng-model="todo.done"></input>
+                <span>{{ todo.text }}</span>
+                <span class="overtime">{{ todo.overtime }}</span>
+                <span class="date">{{(todo.date).toDateString()}}</span>
+                
+            </li>
+        </ul>
+        <form ng-submit="todoList.addTodo()" class="input">
+            <input value="" type="text" ng-model="todoList.todoText" size="30" placeholder="add a event"></input>
+            <input type="date" ng-model="todoList.date"></input>
+            <input type="submit" value="ADD"></input>
+        </form>
+    </div>
+<script type="text/javascript">
+    angular.module("todoApp",[]).controller("todoListCtrl",function(){
+        var todoList = this;
+        todoList.todos=[
+        {text:"管理信息系统作业：互联网+",date:(new Date(2016,1,26)),done:true},
+        {text:"专业英语小论文",date:(new Date(2016,1,17)),done:false},
+        {text:"管理运筹学",date:(new Date(2016,0,22)),done:false}
+        ];
+        todoList.overtime=function(){
+            var date = new Date();
+            angular.forEach(todoList.todos,function(todo){
+                if (date < todo.date){
+                    todo.overtime = "Time over";
+                }           
+            });         
+        };
+        todoList.overtime();
+        todoList.remain=function(){
+            var count= 0;
+            angular.forEach(todoList.todos,function(todo){
+                count += (todo.done)?0:1;
+            });
+            if(count>=5){
+                todoList.commen="Come on!!!";
+            }
+            return count;
+        };
+        todoList.clear=function(){
+            oldtodos=todoList.todos;
+            todoList.todos=[];
+            angular.forEach(oldtodos,function(todo){
+                if(!todo.done){
+                    todoList.todos.push(todo);
+                }                
+            });
+        };
+        todoList.addTodo=function(){
+            //使用return false禁止空白提交；
+            // if(todoList.todoText===""){   这只能避免空白提交，隐式空白是看不见的
+            var re_blank = /^[\s\u3000]*$/ig;
+            if (re_blank.test(todoList.todoText)||todoList.todoText===undefined) {
+                alert('请输入内容');
+                return false;
+            }else{
+                todoList.todos.push({text:todoList.todoText,date:todoList.date,done:false});
+                todoList.todoText="";
+                todoList.date="";
+            }
+        };
+    });
+</script>
+</body>
+
+</html>
+
+<!-- ng-repeat会逐一输出相应的数据，怎样根据数据的不同来获取当前的DOM元素 -->

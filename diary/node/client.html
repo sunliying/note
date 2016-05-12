@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>client</title>
+	<script type="text/javascript" src="./jquery.min.js"></script>
+</head>
+<body>
+	<div>sunliying</div>
+	<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				'url':'/url',
+				'method': 'POST',
+				'data': {},
+				'success': function(data){
+					alert(data);
+				}
+			})
+		})
+	</script>
+</body>
+</html>

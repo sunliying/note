@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+    <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+</head>
+
+<body>
+	<div ng-app = "myApp" ng-controller = "myCtrl" ng-init="aaa=1;bbb=2" >
+        <div><label>a:</label><input type="number" min=0 ng-model="aaa"></input></div>
+        <div><label>b:</label><input type="number" min=0 ng-model="bbb"></input></div>
+        <div><label>summer:</label><span>{{ aaa+bbb }}</span></div>
+        <div><label>summer:</label><span>{{ header }}</span></div>
+    </div>
+<script type="text/javascript">
+    myapp = angular.module("myApp",[]);
+    // myapp.controller("myCtrl",function($scope,$timeout){
+    //     $scope.header = "sunliying";
+    //     $timeout(function(){
+    //         $scope.header += ", how are you going today?";
+    //     },3000);
+    // });
+    // create a custom service
+    myapp.service("sum",function(){
+        this.summer = function(a,b){
+            return a+b;
+        };
+    });
+    myapp.controller("myCtrl",function($scope,sum){
+        // $scope.aaa = 1;
+        // $scope.bbb = 2;
+        // 十分不解这个为什么是undefined，strange！！！
+        console.log($scope.aaa,$scope.bbb);
+        $scope.header = sum.summer( $scope.aaa, $scope.bbb);
+    });
+    // 作为服务返回值的话，不是即时显示的
+</script>
+</body>
+
+</html>

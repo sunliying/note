@@ -1,0 +1,51 @@
+.icon {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url(sprite.svg);
+}
+.icon-home {
+    width: 32px;
+    height: 32px;
+    background-position: 0 0;
+}
+.icon-image {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -42px;
+}
+.icon-headphones {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -84px;
+}
+.icon-music {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -126px;
+}
+.icon-bullhorn {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -168px;
+}
+.icon-connection {
+    width: 40px;
+    height: 32px;
+    background-position: 0 -252px;
+}
+.icon-file-text {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -294px;
+}
+.icon-file-picture {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -336px;
+}
+.icon-price-tag {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -378px;
+}
+

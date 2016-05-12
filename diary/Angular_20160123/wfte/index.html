@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+	<style type="text/css" href="../css/index.css"></style>
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../node_modules/angular-ui-router.statehelper/statehelper.min.js"></script>
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/routestate.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		contacts.initModule($('contacts'));
+    	});
+    </script>
+</head>
+<body ng-app = 'myApp'>
+	<div class="contacts">
+		<a class="contactsClick" ui-sref = "contacts">contacts</a>
+		<div class="contacts-content" ui-view></div>
+	</div>
+</body>
+</html>

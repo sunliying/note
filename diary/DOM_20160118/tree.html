@@ -101,6 +101,7 @@
 		$(function(){
 			$("li:has(ul)").click(function(event){
 				if( this == event.target ){
+					console.log(event.target)
 					if( $(this).children().is(":hidden") ){
 						$(this).removeClass("li-minus");
 						$(this).addClass("li-jia").children().slideDown(400);

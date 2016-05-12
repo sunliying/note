@@ -1,0 +1,8 @@
+<!-- 
+module : contacts.list
+ -->
+<ul class="contacts-list">
+	<li class="contacts-list-user" ng-repeat = 'user in users'>
+		<a ng-href="#/contacts/{{user.id}}">{{user.name}}</a>
+	</li>
+</ul>

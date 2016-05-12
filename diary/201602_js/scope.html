@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>scope</title>
+</head>
+<body>
+<div>sunliying</div>
+	<script type="text/javascript">
+		(function(window){
+			function func1(va1){
+				console.log(va1);
+				function func2(va2){
+					console.log(va2);
+				}
+				func2("function2");
+			}
+			
+			func1("function1");
+			func2("function2");
+		})(window);
+	</script>
+</body>
+</html>
