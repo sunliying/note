@@ -22,24 +22,24 @@
 </head>
 <body>
 	<div draggable="true" class="drag-target">drag</div>
-	<!-- <form>
+	<form>
 		<input type="textarea" rows="30" cols="100" value="textarea"></input>
-	</form> -->
+	</form>
 	<div class="drag-place"></div>
 	<script type="text/javascript">
-		// var target = document.getElementsByTagName("input")[0];
-		// target.ondragenter = function(event){
-		// 	target.style.backgroundColor = "#aaa";
-		// 	event.preventDefault();
-		// };
-		// target.ondragover = function(event){
-		// 	target.style.backgroundColor = "#aaa";
-		// 	event.preventDefault();
-		// };
-		// target.ondrop = function(event){
-		// 	target.value += "     GREAT";
-		// 	event.preventDefault();
-		// };
+		var target = document.getElementsByTagName("input")[0];
+		target.ondragenter = function(event){
+			target.style.backgroundColor = "#aaa";
+			event.preventDefault();
+		};
+		target.ondragover = function(event){
+			target.style.backgroundColor = "#aaa";
+			event.preventDefault();
+		};
+		target.ondrop = function(event){
+			target.value += "     GREAT";
+			event.preventDefault();
+		};
 		var target2 = document.getElementsByClassName("drag-place")[0];
 		var drag = document.getElementsByClassName("drag-target")[0];
 		drag.ondragstart = function(event){

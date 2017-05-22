@@ -21,8 +21,7 @@
 7. align-content(flex container)
 
 		align-content: flex-start|flex-end|center|space-around|stretch
-
-相当于竖直方向上调整对齐方式
+相当于竖直方向上调整对齐方式  
 
 8. align-items（flex container）
 

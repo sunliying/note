@@ -1,8 +1,11 @@
-# MongoDB #
+# MongoDB的启动 #
 
 启动MongoDB，首先指定存储目录，并且要操作MongoDB数据库，服务器需要一直开着
 
-	mongod --dbpath h:/mongoDB/data
+	mongod --dbpath h:/MongoDB/data --logpath h:/MongoDB/log/mongo.log
+
+
+如果只写`mongod`的话会拒绝连接。
 
 指定数据存储目录和日志目录
 
